@@ -5,35 +5,23 @@ T = int(input())
 
 
 for tc in range(1, T+1):
-    stick = input().split('()')
-    laser = '0'.join(stick)
-
-    stick_split = []
-    i = 0
-    while len(laser) != laser.count('0'):
-        if laser[i] == '(':
-            cnt = 0
-            tf = False
-            for j in range(i+1, len(laser)):
-                if laser[j] == '0':
-                    cnt += 1
-                if laser[j] == '(':
-                    break
-                if laser[j] == ')':
-                    stick_split += [cnt]
-                    tf = True
-                    break
-            if tf:
-                laser = laser[:i] + '0'*cnt + laser[j+1:]
-                i = 0
-        if i < len(laser)-1:
-            i += 1
-            continue
-        i -= i
-
+    stick = input()
+    # 막대기를 저장할곳
+    stack = []
+    # 결과
     result = 0
-    for i in stick_split:
-        result = result + 1 + i
 
+    for i in range(len(stick)):
+        # 만약 '('면 바로 스택에 추가
+        if stick[i] == '(':
+            stack.append(i)
+
+        else:
+            # 일단 pop하고
+            stack.pop()
+            # 이전이 '('면 스택의 길이만큼 결과에 추가
+            if stick[i-1] == '(' : result += len(stack)
+            # 아니면 1만 추가
+            else : result += 1
     print("#{} {}".format(tc, result))
 
