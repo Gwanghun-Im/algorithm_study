@@ -16,7 +16,6 @@ my_dict = {
     '0001011': 9
 }
 
-
 for tc in range(1, T+1):
     n, m = map(int, input().split())
     code = [input() for _ in range(n)]
