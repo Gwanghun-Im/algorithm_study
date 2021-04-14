@@ -1,3 +1,6 @@
+import sys
+sys.stdin = open("input.txt")
+
 def reward(M, count, k):
     global maxi, size, ch_cnt
     if count == N:
