@@ -1,4 +1,4 @@
-inp = list(map(int, input().split(', ')))
+inp = list(map(int, input().split()))
 n = max(inp)
 link = [[] for _ in range(n+1)]
 visited =  [0]*(n+1)

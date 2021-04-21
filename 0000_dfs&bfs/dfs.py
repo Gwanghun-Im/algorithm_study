@@ -5,45 +5,44 @@
 '''
 
 
-# def dfs(idx, s):
-#     global n
-#     if len(s) == n:
-#         print('-'.join(s))
-#     for i in link[idx]:
-#         if not visited[i]:
-#             visited[i] = 1
-#             dfs(i, s+str(i))
-#             visited[i] = 0
+def dfs(idx):
+    global n, s
+    for i in link[idx]:
+        if not visited[i]:
+            visited[i] = 1
+            s+=str(i)
+            dfs(i)
 
 
-# inp = list(map(int, input().split(', ')))
+inp = list(map(int, input().split()))
+n = max(inp)
+link = [[] for _ in range(n+1)]
+visited = [0]*(n+1)
+for i in range(0,len(inp), 2):
+    link[inp[i]].append(inp[i+1])
+    link[inp[i+1]].append(inp[i])
+
+visited[1] = 1
+s = '1'
+dfs(1)
+print('-'.join(s))
+
+# inp = list(map(int, input().split()))
 # n = max(inp)
 # link = [[] for _ in range(n+1)]
-# visited =  [0]*(n+1)
+# visited = [0]*(n+1)
 # for i in range(0,len(inp),2):
 #     link[inp[i]].append(inp[i+1])
 #     link[inp[i+1]].append(inp[i])
-
 # stack = [1]
 # visited[1] = 1
-# dfs(1, str(1))
-
-inp = list(map(int, input().split(', ')))
-n = max(inp)
-link = [[] for _ in range(n+1)]
-visited =  [0]*(n+1)
-for i in range(0,len(inp),2):
-    link[inp[i]].append(inp[i+1])
-    
-queue = [1]
-visited[1] = 1
-s = [str(1)]
-while queue:
-    now = queue.pop()
-    for i in link[now]:
-        if not visited[i]:
-            visited[i] = 1
-            queue.append(i)
-            s.append(str(i))
-
-print('-'.join(s))
+# s = []
+# while stack:
+#     now = stack.pop()
+#     s.append(str(now))
+#     for i in link[now]:
+#         if not visited[i]:
+#             visited[i] = 1
+#             stack.append(i)
+#
+# print('-'.join(s))
