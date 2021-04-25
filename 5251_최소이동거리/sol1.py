@@ -16,6 +16,6 @@ for tc in range(1, T+1):
         for j in range(i):
             if arr[j][i] and dis[i] > dis[j]+arr[j][i]:
                 dis[i] = dis[j]+arr[j][i]
-
+    print(dis)
     print("#{} {}".format(tc, dis[-1]))
 
