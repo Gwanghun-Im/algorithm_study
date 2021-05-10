@@ -41,6 +41,5 @@ for tc in range(1, T+1):
         # 위로 전.진.
         depth -= 1
 
-
     print("#{} {}".format(n, row-1))
 
